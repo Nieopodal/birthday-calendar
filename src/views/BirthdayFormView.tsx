@@ -1,9 +1,9 @@
+import React from "react";
 import {FormProvider, useForm} from "react-hook-form";
-import React, {useEffect} from "react";
 import {FormInput} from "../components/common/FormInput";
-import {useDispatch, useSelector} from "react-redux";
-import {setBirthday, setFromLocalStorage} from "../features/birthday/birthday-slice";
-import {RootState} from "../store";
+import {useDispatch} from "react-redux";
+import {setBirthday} from "../features/birthday/birthday-slice";
+import {useLocalStorage} from "../hooks/useLocalStorage";
 
 interface InputsFormData {
     name: string;
@@ -16,7 +16,7 @@ interface InputsFormData {
 export const BirthdayFormView = () => {
 
     const dispatch = useDispatch();
-    // const {first, second} = useSelector((state: RootState) => state.birthday);
+    useLocalStorage();
 
     const handleDispatch = (inputsFormData: InputsFormData) => {
         dispatch(setBirthday(inputsFormData));
@@ -33,28 +33,6 @@ export const BirthdayFormView = () => {
     });
 
     const {handleSubmit} = methods;
-
-    const {birthday: birthdayFromState} = useSelector((state: RootState) => state.birthday);
-
-    useEffect(() => {
-        if (birthdayFromState.length > 1) {
-            return;
-        }
-        else if (birthdayFromState.length === 0) {
-            console.log('stan pusty, sprawdzam localstorage');
-            const birthdayList = localStorage.getItem("birthdayList");
-            if (birthdayList) {
-                const data = birthdayList.length > 0 ? JSON.parse(localStorage.getItem("birthdayList") as string) : null;
-
-                if (data) {
-                    console.log('znalazłem localstorage, zapisuję do stanu!');
-                    dispatch(setFromLocalStorage(data));
-                    return
-                }
-            }
-        }
-    }, [dispatch, birthdayFromState]);
-
 
     return <>
         <h1>Birthday form</h1>
