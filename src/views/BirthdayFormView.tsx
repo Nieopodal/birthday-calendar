@@ -4,6 +4,7 @@ import {FormInput} from "../components/common/FormInput";
 import {useDispatch} from "react-redux";
 import {setBirthday} from "../features/birthday/birthday-slice";
 import {useLocalStorage} from "../hooks/useLocalStorage";
+import {useNavigate} from "react-router-dom";
 
 interface InputsFormData {
     name: string;
@@ -16,6 +17,7 @@ interface InputsFormData {
 export const BirthdayFormView = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     useLocalStorage();
 
     const handleDispatch = (inputsFormData: InputsFormData) => {
@@ -38,8 +40,9 @@ export const BirthdayFormView = () => {
         <h1>Birthday form</h1>
         <main>
             <form onSubmit={handleSubmit(data => {
-                console.log(data);
                 handleDispatch(data);
+                navigate('/calendar', {replace: true});
+
             })}>
                 <FormProvider {...methods}>
                     <FormInput labelName="Name" inputType="text" inputName="name"/>
