@@ -1,6 +1,6 @@
 {
   "name": "birthday",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -11,6 +11,7 @@
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
+    "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",

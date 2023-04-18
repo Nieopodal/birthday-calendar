@@ -1,10 +1,11 @@
 import React from "react";
 import {FormProvider, useForm} from "react-hook-form";
-import {FormInput} from "../components/common/FormInput";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {format, subDays} from 'date-fns';
+import {FormInput} from "../components/common/FormInput";
 import {setBirthday} from "../features/birthday/birthday-slice";
 import {useLocalStorage} from "../hooks/useLocalStorage";
-import {useNavigate} from "react-router-dom";
 
 interface InputsFormData {
     name: string;
@@ -19,10 +20,6 @@ export const BirthdayFormView = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useLocalStorage();
-
-    const handleDispatch = (inputsFormData: InputsFormData) => {
-        dispatch(setBirthday(inputsFormData));
-    };
 
     const methods = useForm<InputsFormData>({
         defaultValues: {
@@ -40,9 +37,16 @@ export const BirthdayFormView = () => {
         <h1>Birthday form</h1>
         <main>
             <form onSubmit={handleSubmit(data => {
-                handleDispatch(data);
-                navigate('/calendar', {replace: true});
 
+                const notification = subDays(new Date(data.dateOfBirth), 14);
+                const notificationFormatted = format(notification, 'yyyy-MM-dd');
+                const fullBirthdayData = {
+                    ...data,
+                    notificationDate: notificationFormatted,
+                };
+
+                dispatch(setBirthday(fullBirthdayData));
+                navigate('/calendar', {replace: true});
             })}>
                 <FormProvider {...methods}>
                     <FormInput labelName="Name" inputType="text" inputName="name"/>

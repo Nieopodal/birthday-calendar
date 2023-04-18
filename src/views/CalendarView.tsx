@@ -1,10 +1,11 @@
 import {useLocalStorage} from "../hooks/useLocalStorage";
+import {Calendar} from "../components/Calendar/Calendar";
 
 export const CalendarView = () => {
     const {birthdayFromState} = useLocalStorage();
 
     return <>
         <p>Calendar view</p>
-        {birthdayFromState && birthdayFromState.map((el, i) => <p key={i}>{el.name}</p>)}
+        <Calendar birthdayFromState={birthdayFromState}/>
         </>
 };

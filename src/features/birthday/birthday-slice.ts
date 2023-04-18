@@ -1,12 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-
-interface OneEntity {
-    name: string;
-    surname: string;
-    email: string;
-    dateOfBirth: string;
-    hobbies: string;
-}
+import {OneEntity} from "../../types/OneEntity";
 
 interface SetBirthday {
     payload: OneEntity;
