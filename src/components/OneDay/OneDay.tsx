@@ -1,28 +1,33 @@
 import {OneEntity} from "../../types/OneEntity";
 import {useTodayEvents} from "../../hooks/useTodayEvents";
 import {OneDayCard} from "./OneDayCard";
+import {CalendarPeriod} from "../../types/CalendarPeriod";
 
 interface Props {
     dayNumber: number;
+    monthNumberToPrint?: string;
     today: number | null;
-    entitiesWithBirthdayThisMonth: OneEntity[];
-    entitiesWithNotificationsThisMonth: OneEntity[];
+    period: CalendarPeriod;
+    entitiesWithBirthdayThisPeriod: OneEntity[];
+    entitiesWithNotificationsThisPeriod: OneEntity[];
 }
 
 export const OneDay = ({
                            dayNumber,
                            today,
-                           entitiesWithNotificationsThisMonth,
-                           entitiesWithBirthdayThisMonth
+                           entitiesWithNotificationsThisPeriod,
+                           entitiesWithBirthdayThisPeriod,
+                           period,
+                           monthNumberToPrint,
                        }: Props) => {
 
     const {
         todayNotificationEntities,
         todayBirthdayEntities,
         loading
-    } = useTodayEvents(dayNumber, entitiesWithNotificationsThisMonth, entitiesWithBirthdayThisMonth);
+    } = useTodayEvents(dayNumber, entitiesWithNotificationsThisPeriod, entitiesWithBirthdayThisPeriod);
 
     if (loading) return null;
     return <OneDayCard dayNumber={dayNumber} today={today} todayNotificationEntities={todayNotificationEntities}
-                       todayBirthdayEntities={todayBirthdayEntities}/>
+                       todayBirthdayEntities={todayBirthdayEntities} period={period} monthNumberToPrint={monthNumberToPrint}/>
 };
