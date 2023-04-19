@@ -1,23 +1,30 @@
 import {useState} from "react";
-import {format} from "date-fns";
-import {MonthDays} from "../MonthDays/MonthDays";
-import {changeMonth} from "../../handlers/change-month";
-import {ChangeMonthDirection} from "../../types/ChangeMonthDirection";
+import {ChangePeriodDirection} from "../../types/ChangePeriodDirection";
+import {changePeriod} from "../../handlers/change-period";
+import {PeriodDays} from "../PeriodDays/PeriodDays";
+import {CalendarPeriod} from "../../types/CalendarPeriod";
 
 import './Calendar.css';
+import {format} from "date-fns";
 
-export const Calendar = () => {
+interface Props {
+    period: CalendarPeriod;
+}
+
+export const Calendar = ({period}: Props) => {
 
     const [givenDate, setGivenDate] = useState<Date>(new Date());
 
-    const btnHandler = (direction: ChangeMonthDirection) => {
-        setGivenDate(changeMonth(givenDate, direction));
+    const btnHandler = (direction: ChangePeriodDirection) => {
+        setGivenDate(changePeriod(givenDate, direction, period));
     };
 
     return <>
-        {format(givenDate, "MMMM yyyy")}
-        <button onClick={() => btnHandler(ChangeMonthDirection.Previous)}>Previous</button>
-        <button onClick={() => btnHandler(ChangeMonthDirection.Next)}>Next</button>
+        <p>{period === CalendarPeriod.Month ? `Monthly calendar` : `Weekly calendar`}</p>
+        <p>{period === CalendarPeriod.Month ? format(givenDate, "MMMM yyyy") : `Week number: ${format(givenDate, "ww/yyyy")}`}</p>
+
+        <button onClick={() => btnHandler(ChangePeriodDirection.Previous)}>Previous</button>
+        <button onClick={() => btnHandler(ChangePeriodDirection.Next)}>Next</button>
 
         <div className="wrapper">
             <div className="child">Mon</div>
@@ -28,8 +35,9 @@ export const Calendar = () => {
             <div className="child">Sat</div>
             <div className="child">Sun</div>
 
-            <MonthDays
+            <PeriodDays
                 givenDate={givenDate}
+                period={period}
             />
 
         </div>
