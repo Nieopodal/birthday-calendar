@@ -1,0 +1,25 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 90vh;
+    margin: 0 auto;
+}
+
+.child {
+    border: 2px solid #61dafb;
+    height: 2rem;
+    width: 2rem;
+}
+
+.one-day-card {
+    height: 100%;
+    width: 100%;
+}
+
+.one-day-card:hover {
+    background-color: #5444;
+}
+
+.today {
+    background-color: burlywood;
+}
