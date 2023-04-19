@@ -1,6 +1,6 @@
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store";
-import {useEffect} from "react";
 import {setFromLocalStorage} from "../features/birthday/birthday-slice";
 
 export const useLocalStorage = () => {

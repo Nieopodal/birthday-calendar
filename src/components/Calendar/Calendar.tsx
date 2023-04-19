@@ -1,11 +1,11 @@
 import {OneEntity} from "../../types/OneEntity";
 import {useState} from "react";
-import {addMonths, format} from "date-fns";
-
-import './Calendar.css';
+import {format} from "date-fns";
 import {MonthDays} from "../MonthDays/MonthDays";
 import {changeMonth} from "../../handlers/change-month";
 import {ChangeMonthDirection} from "../../types/ChangeMonthDirection";
+
+import './Calendar.css';
 
 interface Props {
     birthdayFromState: OneEntity[];
@@ -13,7 +13,7 @@ interface Props {
 
 export const Calendar = ({birthdayFromState}: Props) => {
 
-    const [givenDate, setGivenDate] = useState<Date>(addMonths(new Date(), 1));
+    const [givenDate, setGivenDate] = useState<Date>(new Date());
 
     const btnHandler = (direction: ChangeMonthDirection) => {
         setGivenDate(changeMonth(givenDate, direction));
