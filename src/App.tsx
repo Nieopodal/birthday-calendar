@@ -10,10 +10,12 @@ import {store} from "./store";
 export const App = () => {
 
     return <Provider store={store}>
+        <div style={{position: "relative"}}>
         <Routes>
             <Route path="/" element={<HomeView/>}/>
             <Route path="/birthday-form" element={<BirthdayFormView/>}/>
             <Route path="/calendar" element={<CalendarView/>}/>
         </Routes>
+        </div>
     </Provider>
 };

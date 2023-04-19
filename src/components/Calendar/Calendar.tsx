@@ -1,4 +1,3 @@
-import {OneEntity} from "../../types/OneEntity";
 import {useState} from "react";
 import {format} from "date-fns";
 import {MonthDays} from "../MonthDays/MonthDays";
@@ -7,11 +6,7 @@ import {ChangeMonthDirection} from "../../types/ChangeMonthDirection";
 
 import './Calendar.css';
 
-interface Props {
-    birthdayFromState: OneEntity[];
-}
-
-export const Calendar = ({birthdayFromState}: Props) => {
+export const Calendar = () => {
 
     const [givenDate, setGivenDate] = useState<Date>(new Date());
 
@@ -20,7 +15,7 @@ export const Calendar = ({birthdayFromState}: Props) => {
     };
 
     return <>
-        {format(givenDate, "MMMM")}
+        {format(givenDate, "MMMM yyyy")}
         <button onClick={() => btnHandler(ChangeMonthDirection.Previous)}>Previous</button>
         <button onClick={() => btnHandler(ChangeMonthDirection.Next)}>Next</button>
 
@@ -33,7 +28,10 @@ export const Calendar = ({birthdayFromState}: Props) => {
             <div className="child">Sat</div>
             <div className="child">Sun</div>
 
-            <MonthDays givenDate={givenDate}/>
+            <MonthDays
+                givenDate={givenDate}
+            />
+
         </div>
     </>
 };

@@ -10,15 +10,13 @@ export const useLocalStorage = () => {
     useEffect(() => {
         if (birthdayFromState.length > 1) {
             return;
-        }
-        else if (birthdayFromState.length === 0) {
-            console.log('stan pusty, sprawdzam localstorage');
+        } else if (birthdayFromState.length === 0) {
             const birthdayList = localStorage.getItem("birthdayList");
+
             if (birthdayList) {
                 const data = birthdayList.length > 0 ? JSON.parse(localStorage.getItem("birthdayList") as string) : null;
 
                 if (data) {
-                    console.log('znalazłem localstorage, zapisuję do stanu!');
                     dispatch(setFromLocalStorage(data));
                     return;
                 }

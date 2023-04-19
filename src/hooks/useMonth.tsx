@@ -41,5 +41,5 @@ export const useMonth = (givenDate: Date) => {
         setDaysInMonthListIncludingZeros(auxiliaryArray);
     }, [givenDate]);
 
-    return {daysInMonthListIncludingZeros, today}
+    return {daysInMonthListIncludingZeros, today};
 };

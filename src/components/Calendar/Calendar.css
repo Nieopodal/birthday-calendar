@@ -21,5 +21,14 @@
 }
 
 .today {
+    border: 1px solid #282c34;
+    font-weight: bold;
+}
+
+.notification {
     background-color: burlywood;
+}
+
+.birthday {
+    background-color: #61dafb;
 }
