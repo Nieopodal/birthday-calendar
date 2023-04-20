@@ -12,8 +12,10 @@ export const EventList = ({header, entitiesList}: Props) => (
         <ul>
             {entitiesList.map((el, i) =>
                 <li key={i}>
-                    {`${el.name} ${el.surname} - data urodzenia: ${el.dateOfBirth}, email: ${el.email}`}
-                    <p><strong>Zainteresowania:</strong> {el.hobbies}</p>
+                    <strong>{el.name} {el.surname}</strong>:
+                    <div>Email: {el.email}</div>
+                    <div>Data urodzenia: {el.dateOfBirth}</div>
+                    <div>Zainteresowania: {el.hobbies}</div>
                 </li>)
             }
         </ul>

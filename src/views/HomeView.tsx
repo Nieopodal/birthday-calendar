@@ -19,7 +19,7 @@ export const HomeView = () => {
         {
             sortedLimitedEntities.map((el, i) => <EventList
                 key={i}
-                header={`${format(new Date(el.eventDate), "yyyy-MM-dd")} - ${el.eventType === EventType.Birthday ? "Urodziny" : "Nadchodzą urodziny"}`}
+                header={`${format(new Date(el.eventDate), "yyyy-MM-dd")} - ${el.eventType === EventType.Birthday ? "Urodziny:" : "Pamiętaj o prezencie dla:"}`}
                 entitiesList={[el]}
             />)
         }

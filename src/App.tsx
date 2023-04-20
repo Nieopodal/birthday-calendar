@@ -6,16 +6,19 @@ import {BirthdayFormView} from "./views/BirthdayFormView";
 import {CalendarView} from "./views/CalendarView";
 import {Provider} from "react-redux";
 import {store} from "./store";
+import {AppContainer} from "./components/AppContainer/AppContainer";
 
 export const App = () => {
 
     return <Provider store={store}>
-        <div style={{position: "relative"}}>
-        <Routes>
-            <Route path="/" element={<HomeView/>}/>
-            <Route path="/birthday-form" element={<BirthdayFormView/>}/>
-            <Route path="/calendar" element={<CalendarView/>}/>
-        </Routes>
+        <div>
+            <AppContainer>
+                <Routes>
+                    <Route path="/" element={<HomeView/>}/>
+                    <Route path="/birthday-form" element={<BirthdayFormView/>}/>
+                    <Route path="/calendar" element={<CalendarView/>}/>
+                </Routes>
+            </AppContainer>
         </div>
     </Provider>
 };

@@ -32,3 +32,9 @@
 .birthday {
     background-color: #61dafb;
 }
+
+.calendar-actions {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

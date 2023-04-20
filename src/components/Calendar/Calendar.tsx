@@ -5,6 +5,7 @@ import {PeriodDays} from "../PeriodDays/PeriodDays";
 import {CalendarPeriod} from "../../types/CalendarPeriod";
 
 import './Calendar.css';
+
 import {format} from "date-fns";
 
 interface Props {
@@ -20,8 +21,8 @@ export const Calendar = ({period}: Props) => {
     };
 
     return <>
-        <p>{period === CalendarPeriod.Month ? `Monthly calendar` : `Weekly calendar`}</p>
-        <p>{period === CalendarPeriod.Month ? format(givenDate, "MMMM yyyy") : `Week number: ${format(givenDate, "ww/yyyy")}`}</p>
+        <h2>{period === CalendarPeriod.Month ? `Monthly calendar` : `Weekly calendar`}</h2>
+        <h3>{period === CalendarPeriod.Month ? format(givenDate, "MMMM yyyy") : `Week number: ${format(givenDate, "ww/yyyy")}`}</h3>
 
         <button onClick={() => btnHandler(ChangePeriodDirection.Previous)}>Previous</button>
         <button onClick={() => btnHandler(ChangePeriodDirection.Next)}>Next</button>

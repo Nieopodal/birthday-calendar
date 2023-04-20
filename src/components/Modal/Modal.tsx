@@ -19,12 +19,12 @@ export const Modal = ({open, toggleOpen, todayNotificationEntities, todayBirthda
 
         {
             todayBirthdayEntities.length > 0 &&
-            <EventList header="Urodziny" entitiesList={todayBirthdayEntities}/>
+            <EventList header="Urodziny:" entitiesList={todayBirthdayEntities}/>
         }
 
         {
             todayNotificationEntities.length > 0 &&
-            <EventList header="Niedługo urodziny obchodzi:" entitiesList={todayNotificationEntities}/>
+            <EventList header="Pamiętaj o prezencie dla:" entitiesList={todayNotificationEntities}/>
         }
 
         <button onClick={toggleOpen}>Zamknij</button>
