@@ -3,9 +3,9 @@ import {FormProvider, useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {format, subDays} from 'date-fns';
-import {FormInput} from "../components/common/FormInput";
-import {setBirthday} from "../features/birthday/birthday-slice";
-import {useLocalStorage} from "../hooks/useLocalStorage";
+import {FormInput} from "../../components/common/FormInput/FormInput";
+import {setBirthday} from "../../features/birthday/birthday-slice";
+import {useLocalStorage} from "../../hooks/useLocalStorage";
 
 interface InputsFormData {
     name: string;

@@ -2,11 +2,13 @@ import {useState} from "react";
 import {FormProvider, useForm} from "react-hook-form";
 import {getYear} from "date-fns";
 import {useLocalStorage} from "../../hooks/useLocalStorage";
-import {FormInput} from "../common/FormInput";
+import {FormInput} from "../common/FormInput/FormInput";
 import {OneEntityIncludingEventDateAndType} from "../../types/OneEntity";
 import {EventType} from "../../types/EventType";
-import {EventTypeSelect} from "../EventTypeSelect";
+import {EventTypeSelect} from "../EventTypeSelect/EventTypeSelect";
 import {FindBirthdayResults} from "../FindBirthdayResults/FindBirthdayResults";
+
+import styles from './StylesBirthday.module.scss';
 
 interface InputFormData {
     name: string;
@@ -47,7 +49,7 @@ export const FindBirthday = () => {
     };
 
     return <>
-        <h3>Find events by username (full or partial):</h3>
+        <h3 className={styles.h3}>Find events by username (full or partial):</h3>
 
         <form onSubmit={handleSubmit(data => formSubmitHandler(data))}>
             <FormProvider {...methods}>

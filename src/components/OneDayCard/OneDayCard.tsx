@@ -3,6 +3,8 @@ import {OneEntity} from "../../types/OneEntity";
 import {Modal} from "../Modal/Modal";
 import {CalendarPeriod} from "../../types/CalendarPeriod";
 
+import styles from "./OneDayCard.module.scss";
+
 interface Props {
     dayNumber: number;
     monthNumberToPrint?: string;
@@ -43,12 +45,12 @@ export const OneDayCard = ({
 
         {
             dayNumber > 0 &&
-            <button
-                className={`one-day-card ${dayNumber === today ? 'today' : ''} ${todayNotificationEntities.length > 0 && 'notification'} ${todayBirthdayEntities.length > 0 && 'birthday'}`}
+            <div
+                className={`${styles.card} ${dayNumber === today ? styles.today : ''} ${todayNotificationEntities.length > 0 && styles.notification} ${todayBirthdayEntities.length > 0 && styles.birthday}`}
                 onClick={btnHandler}
             >
                 {period === CalendarPeriod.Week ? `${dayNumber}/${monthNumberToPrint}` : dayNumber}
-            </button>
+            </div>
         }
     </>
 };

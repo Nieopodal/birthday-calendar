@@ -1,46 +1,57 @@
 import {useState} from "react";
-import {ChangePeriodDirection} from "../../types/ChangePeriodDirection";
-import {changePeriod} from "../../handlers/change-period";
-import {PeriodDays} from "../PeriodDays/PeriodDays";
-import {CalendarPeriod} from "../../types/CalendarPeriod";
-
-import './Calendar.css';
-
 import {format} from "date-fns";
+import {ChangePeriodDirection} from "../../types/ChangePeriodDirection";
+import {BackwardSvg} from "../Svg/BackwardSvg/BackwardSvg";
+import {ForwardSvg} from "../Svg/ForwardSvg/ForwardSvg";
+import {changePeriod} from "../../handlers/change-period";
+import {CalendarPeriod} from "../../types/CalendarPeriod";
+import {PeriodDays} from "../PeriodDays/PeriodDays";
+import {EventType} from "../../types/EventType";
+import {Square} from "../common/Square/Square";
 
-interface Props {
-    period: CalendarPeriod;
-}
+import styles from './Calendar.module.scss';
 
-export const Calendar = ({period}: Props) => {
+const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+export const Calendar = () => {
 
     const [givenDate, setGivenDate] = useState<Date>(new Date());
+    const [calendarPeriod, setCalendarPeriod] = useState<CalendarPeriod>(CalendarPeriod.Month);
 
-    const btnHandler = (direction: ChangePeriodDirection) => {
-        setGivenDate(changePeriod(givenDate, direction, period));
+    const changeCalendarViewBtnHandler = () => {
+        setCalendarPeriod(prev => prev === CalendarPeriod.Week ? CalendarPeriod.Month : CalendarPeriod.Week);
+    };
+
+    const changePeriodBtnHandler = (direction: ChangePeriodDirection) => {
+        setGivenDate(changePeriod(givenDate, direction, calendarPeriod));
     };
 
     return <>
-        <h2>{period === CalendarPeriod.Month ? `Monthly calendar` : `Weekly calendar`}</h2>
-        <h3>{period === CalendarPeriod.Month ? format(givenDate, "MMMM yyyy") : `Week number: ${format(givenDate, "ww/yyyy")}`}</h3>
+        <h1 className={styles.h1}>{calendarPeriod === CalendarPeriod.Month ? `Monthly calendar` : `Weekly calendar`}</h1>
+        <h2 className={styles.h2}>{calendarPeriod === CalendarPeriod.Month ? format(givenDate, "MMMM yyyy") : `Week number: ${format(givenDate, "ww/yyyy")}`}</h2>
 
-        <button onClick={() => btnHandler(ChangePeriodDirection.Previous)}>Previous</button>
-        <button onClick={() => btnHandler(ChangePeriodDirection.Next)}>Next</button>
+        <div className={styles.nav}>
+            <button onClick={() => changePeriodBtnHandler(ChangePeriodDirection.Previous)}><BackwardSvg/></button>
+            <button onClick={() => changePeriodBtnHandler(ChangePeriodDirection.Next)}><ForwardSvg/></button>
+        </div>
 
-        <div className="wrapper">
-            <div className="child">Mon</div>
-            <div className="child">Tue</div>
-            <div className="child">Wed</div>
-            <div className="child">Thu</div>
-            <div className="child">Fri</div>
-            <div className="child">Sat</div>
-            <div className="child">Sun</div>
-
+        <div className={styles.wrapper}>
+            {
+                WEEKDAYS.map((el, i) => <div className={styles.child} key={i}>{el}</div>)
+            }
             <PeriodDays
                 givenDate={givenDate}
-                period={period}
+                period={calendarPeriod}
             />
-
         </div>
+
+        <div className={styles.footer}>
+            <button className={styles.change_btn} onClick={changeCalendarViewBtnHandler}>Change view</button>
+            <div className={styles.legend}>
+                <Square background={EventType.Birthday}/> - Birthday,
+                <Square background={EventType.Notification}/> - Reminder
+            </div>
+        </div>
+
     </>
 };

@@ -1,7 +1,7 @@
 import {OneEntity} from "../../types/OneEntity";
-import {EventList} from "../common/EventList";
+import {EventList} from "../common/EventList/EventList";
 
-import './Modal.css';
+import styles from './Modal.module.scss';
 
 interface Props {
     open: boolean;
@@ -14,19 +14,21 @@ export const Modal = ({open, toggleOpen, todayNotificationEntities, todayBirthda
 
     if (!open) return null;
 
-    return <div className="modal">
-        <h2>Dzisiejsze wydarzenia:</h2>
+    return <div className={styles.modal}>
+        <h3 className={styles.h3}>Events:</h3>
 
         {
             todayBirthdayEntities.length > 0 &&
-            <EventList header="Urodziny:" entitiesList={todayBirthdayEntities}/>
+            <EventList header="Birthday:" entitiesList={todayBirthdayEntities}/>
         }
 
         {
             todayNotificationEntities.length > 0 &&
-            <EventList header="Pamiętaj o prezencie dla:" entitiesList={todayNotificationEntities}/>
+            <EventList header="Remember - buy a gift for:" entitiesList={todayNotificationEntities}/>
         }
+        <div className={styles.action}>
+            <button onClick={toggleOpen}>Close</button>
+        </div>
 
-        <button onClick={toggleOpen}>Zamknij</button>
     </div>
 };

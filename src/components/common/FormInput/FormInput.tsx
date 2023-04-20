@@ -1,6 +1,8 @@
 import React from "react";
 import {useFormContext} from "react-hook-form";
 
+import styles from './FormInput.module.scss';
+
 interface Props {
     labelName: string;
     inputType: string;
@@ -11,7 +13,8 @@ interface Props {
 export const FormInput  = ({labelName, inputType, inputName, isRequired}: Props) => {
     const { register } = useFormContext()
 
-    return <label>
+    return <div className={styles.container}>
+        <label className={styles.label}>
         {labelName}:
         <input
             type={inputType}
@@ -19,4 +22,5 @@ export const FormInput  = ({labelName, inputType, inputName, isRequired}: Props)
             required={isRequired}
         />
     </label>
+    </div>
 };

@@ -1,6 +1,6 @@
 import {OneEntity} from "../../types/OneEntity";
 import {useTodayEvents} from "../../hooks/useTodayEvents";
-import {OneDayCard} from "./OneDayCard";
+import {OneDayCard} from "../OneDayCard/OneDayCard";
 import {CalendarPeriod} from "../../types/CalendarPeriod";
 
 interface Props {
