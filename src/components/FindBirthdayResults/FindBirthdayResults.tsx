@@ -1,7 +1,7 @@
+import {format} from "date-fns";
 import {EventList} from "../common/EventList/EventList";
 import {OneEntityIncludingEventDateAndType} from "../../types/OneEntity";
-import {format} from "date-fns";
-import {EventType} from "../../types/EventType";
+import {returnEventTextHandler} from "../../handlers/return-event-text";
 
 interface Props {
     foundEntities: OneEntityIncludingEventDateAndType[] | null;
@@ -14,7 +14,9 @@ export const FindBirthdayResults = ({foundEntities}: Props) => {
     return <div>
         <div>Found {foundEntities.length} result(s)</div>
         {
-            foundEntities.map((el, i) => <EventList key={i} header={`${format(new Date(el.eventDate), "yyyy-MM-dd")}  - ${el.eventType === EventType.Birthday ? "Birthday" : "Remember - buy a git for:"} `} entitiesList={[el]}/>)
+            foundEntities.map((el, i) => <EventList key={i}
+                                                    header={`${format(new Date(el.eventDate), "yyyy-MM-dd")}  - ${returnEventTextHandler(el.eventType)} `}
+                                                    entitiesList={[el]}/>)
         }
     </div>
 };

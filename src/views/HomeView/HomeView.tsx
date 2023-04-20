@@ -1,8 +1,8 @@
 import {NavLink} from "react-router-dom";
-import {useUpcomingEvents} from "../../hooks/useUpcomingEvents";
 import {format} from "date-fns";
+import {useUpcomingEvents} from "../../hooks/useUpcomingEvents";
 import {EventList} from "../../components/common/EventList/EventList";
-import {EventType} from "../../types/EventType";
+import {returnEventTextHandler} from "../../handlers/return-event-text";
 
 import styles from './HomeView.module.scss';
 
@@ -20,9 +20,10 @@ export const HomeView = () => {
         {
             sortedLimitedEntities.map((el, i) => <EventList
                 key={i}
-                header={`${format(new Date(el.eventDate), "yyyy-MM-dd")} - ${el.eventType === EventType.Birthday ? "Birthday:" : "Remember - buy a gift for:"}`}
+                header={`${format(new Date(el.eventDate), "yyyy-MM-dd")} - ${returnEventTextHandler(el.eventType)}`}
                 entitiesList={[el]}
             />)
         }
     </>
 };
+
