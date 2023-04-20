@@ -49,11 +49,11 @@ export const BirthdayFormView = () => {
                 navigate('/calendar', {replace: true});
             })}>
                 <FormProvider {...methods}>
-                    <FormInput labelName="Name" inputType="text" inputName="name"/>
-                    <FormInput labelName="Surname" inputType="text" inputName="surname"/>
-                    <FormInput labelName="E-mail" inputType="email" inputName="email"/>
-                    <FormInput labelName="Date of birth" inputType="date" inputName="dateOfBirth"/>
-                    <FormInput labelName="Hobbies" inputType="text" inputName="hobbies"/>
+                    <FormInput labelName="Name" inputType="text" inputName="name" isRequired/>
+                    <FormInput labelName="Surname" inputType="text" inputName="surname" isRequired/>
+                    <FormInput labelName="E-mail" inputType="email" inputName="email" isRequired/>
+                    <FormInput labelName="Date of birth" inputType="date" inputName="dateOfBirth" isRequired/>
+                    <FormInput labelName="Hobbies" inputType="text" inputName="hobbies" isRequired/>
                     <button type="submit">Save</button>
                 </FormProvider>
             </form>

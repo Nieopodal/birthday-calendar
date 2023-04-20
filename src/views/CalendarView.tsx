@@ -1,14 +1,13 @@
-import {useLocalStorage} from "../hooks/useLocalStorage";
-import {Calendar} from "../components/Calendar/Calendar";
 import {useState} from "react";
+import {Calendar} from "../components/Calendar/Calendar";
 import {CalendarPeriod} from "../types/CalendarPeriod";
+import {FindBirthday} from "../components/FindBirthday/FindBirthday";
 
 export const CalendarView = () => {
-    useLocalStorage();
 
     const [toggleCalendarView, setToggleCalendarView] = useState<CalendarPeriod>(CalendarPeriod.Month);
 
-    const btnHandler = () => {
+    const changeCalendarViewBtnHandler = () => {
         setToggleCalendarView(prev => {
             if (prev === CalendarPeriod.Week) return CalendarPeriod.Month;
             else return CalendarPeriod.Week;
@@ -16,8 +15,9 @@ export const CalendarView = () => {
     };
 
     return <>
-        <p>Calendar view</p>
-        <button onClick={btnHandler}>Change view</button>
+        <h1>Calendar view</h1>
+        <button onClick={changeCalendarViewBtnHandler}>Change view</button>
         <Calendar period={toggleCalendarView}/>
+        <FindBirthday/>
     </>
 };

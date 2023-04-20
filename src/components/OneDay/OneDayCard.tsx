@@ -12,7 +12,14 @@ interface Props {
     period: CalendarPeriod;
 }
 
-export const OneDayCard = ({dayNumber, monthNumberToPrint, todayNotificationEntities, todayBirthdayEntities, today, period}: Props) => {
+export const OneDayCard = ({
+                               dayNumber,
+                               monthNumberToPrint,
+                               todayNotificationEntities,
+                               todayBirthdayEntities,
+                               today,
+                               period
+                           }: Props) => {
 
     const [openModal, setOpenModal] = useState<boolean>(false);
 
@@ -25,16 +32,23 @@ export const OneDayCard = ({dayNumber, monthNumberToPrint, todayNotificationEnti
     };
 
     return <>
-
-        <Modal open={openModal} toggleOpen={toggleOpen} todayNotificationEntities={todayNotificationEntities} todayBirthdayEntities={todayBirthdayEntities}/>
+        <Modal
+            open={openModal}
+            toggleOpen={toggleOpen}
+            todayNotificationEntities={todayNotificationEntities}
+            todayBirthdayEntities={todayBirthdayEntities}
+        />
 
         {dayNumber === 0 && <div/>}
 
-        {dayNumber > 0 && <button
-            className={`one-day-card ${dayNumber === today ? 'today' : ''} ${todayNotificationEntities.length > 0 && 'notification'} ${todayBirthdayEntities.length > 0 && 'birthday'}`}
-            onClick={btnHandler}
-        >
-            {period === CalendarPeriod.Week ? `${dayNumber}/${monthNumberToPrint}` : dayNumber}
-        </button>}
-        </>
+        {
+            dayNumber > 0 &&
+            <button
+                className={`one-day-card ${dayNumber === today ? 'today' : ''} ${todayNotificationEntities.length > 0 && 'notification'} ${todayBirthdayEntities.length > 0 && 'birthday'}`}
+                onClick={btnHandler}
+            >
+                {period === CalendarPeriod.Week ? `${dayNumber}/${monthNumberToPrint}` : dayNumber}
+            </button>
+        }
+    </>
 };

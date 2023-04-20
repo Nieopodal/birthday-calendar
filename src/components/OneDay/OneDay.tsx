@@ -25,9 +25,19 @@ export const OneDay = ({
         todayNotificationEntities,
         todayBirthdayEntities,
         loading
-    } = useTodayEvents(dayNumber, entitiesWithNotificationsThisPeriod, entitiesWithBirthdayThisPeriod);
+    } = useTodayEvents(
+        dayNumber,
+        entitiesWithNotificationsThisPeriod,
+        entitiesWithBirthdayThisPeriod
+    );
 
     if (loading) return null;
-    return <OneDayCard dayNumber={dayNumber} today={today} todayNotificationEntities={todayNotificationEntities}
-                       todayBirthdayEntities={todayBirthdayEntities} period={period} monthNumberToPrint={monthNumberToPrint}/>
+    return <OneDayCard
+        dayNumber={dayNumber}
+        today={today}
+        todayNotificationEntities={todayNotificationEntities}
+        todayBirthdayEntities={todayBirthdayEntities}
+        period={period}
+        monthNumberToPrint={monthNumberToPrint}
+    />
 };

@@ -1,4 +1,4 @@
-import {OneEntity} from "../types/OneEntity";
+import {OneEntity} from "../../types/OneEntity";
 
 interface Props {
     header: string;
@@ -6,7 +6,7 @@ interface Props {
 
 }
 
-export const ModalEventList = ({header, entitiesList}: Props) => (
+export const EventList = ({header, entitiesList}: Props) => (
     <>
         <h3>{header}</h3>
         <ul>

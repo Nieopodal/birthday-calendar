@@ -1,6 +1,7 @@
-import './Modal.css';
 import {OneEntity} from "../../types/OneEntity";
-import {ModalEventList} from "../ModalEventList";
+import {EventList} from "../common/EventList";
+
+import './Modal.css';
 
 interface Props {
     open: boolean;
@@ -18,12 +19,12 @@ export const Modal = ({open, toggleOpen, todayNotificationEntities, todayBirthda
 
         {
             todayBirthdayEntities.length > 0 &&
-            <ModalEventList header="Urodziny" entitiesList={todayBirthdayEntities}/>
+            <EventList header="Urodziny" entitiesList={todayBirthdayEntities}/>
         }
 
         {
             todayNotificationEntities.length > 0 &&
-            <ModalEventList header="Niedługo urodziny obchodzi:" entitiesList={todayNotificationEntities}/>
+            <EventList header="Niedługo urodziny obchodzi:" entitiesList={todayNotificationEntities}/>
         }
 
         <button onClick={toggleOpen}>Zamknij</button>

@@ -22,20 +22,27 @@ export const PeriodDays = ({givenDate, period}: Props) => {
 
         {period === CalendarPeriod.Month &&
             daysInPeriodListIncludingZeros.map((el, i) =>
-                <OneDay dayNumber={el} today={today} key={i}
+                <OneDay dayNumber={el}
+                        today={today}
+                        key={i}
                         entitiesWithBirthdayThisPeriod={entitiesWithBirthdayThisPeriod}
-                        entitiesWithNotificationsThisPeriod={entitiesWithNotificationsThisPeriod} period={period}/>
+                        entitiesWithNotificationsThisPeriod={entitiesWithNotificationsThisPeriod}
+                        period={period}
+                />
             )
-
         }
 
         {
             period === CalendarPeriod.Week &&
             datesInWeek.map((el, i) =>
-                <OneDay key={i} dayNumber={Number(el.slice(8, 10))} today={today}
+                <OneDay key={i}
+                        dayNumber={Number(el.slice(8, 10))}
+                        today={today}
                         entitiesWithBirthdayThisPeriod={entitiesWithBirthdayThisPeriod}
-                        entitiesWithNotificationsThisPeriod={entitiesWithNotificationsThisPeriod} period={period}
-                        monthNumberToPrint={(el.slice(5, 7))}/>
+                        entitiesWithNotificationsThisPeriod={entitiesWithNotificationsThisPeriod}
+                        period={period}
+                        monthNumberToPrint={(el.slice(5, 7))}
+                />
             )
         }
     </>

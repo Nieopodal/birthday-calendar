@@ -5,9 +5,10 @@ interface Props {
     labelName: string;
     inputType: string;
     inputName: string;
+    isRequired?: boolean;
 }
 
-export const FormInput  = ({labelName, inputType, inputName}: Props) => {
+export const FormInput  = ({labelName, inputType, inputName, isRequired}: Props) => {
     const { register } = useFormContext()
 
     return <label>
@@ -15,7 +16,7 @@ export const FormInput  = ({labelName, inputType, inputName}: Props) => {
         <input
             type={inputType}
             {...register(inputName)}
-            required
+            required={isRequired}
         />
     </label>
 };

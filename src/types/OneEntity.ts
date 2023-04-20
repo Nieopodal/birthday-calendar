@@ -1,3 +1,5 @@
+import {EventType} from "./EventType";
+
 export interface OneEntity {
     name: string;
     surname: string;
@@ -5,4 +7,9 @@ export interface OneEntity {
     dateOfBirth: string;
     notificationDate: string;
     hobbies: string;
+}
+
+export interface OneEntityIncludingEventDateAndType extends OneEntity {
+    eventDate: string;
+    eventType: EventType;
 }
