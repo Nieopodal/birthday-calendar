@@ -10,12 +10,12 @@ export const HomeView = () => {
     const {sortedLimitedEntities} = useUpcomingEvents();
 
     return <>
-        <h1 className={styles.h1}>Calendar - home page</h1>
+        <h1 className={styles.h1}>Kalendarz - strona główna</h1>
 
-        <NavLink className={styles.link} to="/birthday-form">Go to birthday form</NavLink>
-        <NavLink className={styles.link} to="/calendar">Go to calendar</NavLink>
-        <h2>Three upcoming events:</h2>
-        {sortedLimitedEntities.length === 0 && <p>No events yet.</p>}
+        <NavLink className={styles.link} to="/birthday-form">Strona formularza</NavLink>
+        <NavLink className={styles.link} to="/calendar">Kalendarz</NavLink>
+        <h2>Trzy nachodzące wydarzenia:</h2>
+        {sortedLimitedEntities.length === 0 && <p>Brak nadchodzących wydarzeń.</p>}
 
         {
             sortedLimitedEntities.map((el, i) => <EventList

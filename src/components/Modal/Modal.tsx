@@ -15,19 +15,19 @@ export const Modal = ({open, toggleOpen, todayNotificationEntities, todayBirthda
     if (!open) return null;
 
     return <div className={styles.modal}>
-        <h3 className={styles.h3}>Events:</h3>
+        <h3 className={styles.h3}>Wydarzenia:</h3>
 
         {
             todayBirthdayEntities.length > 0 &&
-            <EventList header="Birthday:" entitiesList={todayBirthdayEntities}/>
+            <EventList header="Urodziny:" entitiesList={todayBirthdayEntities}/>
         }
 
         {
             todayNotificationEntities.length > 0 &&
-            <EventList header="Remember - buy a gift for:" entitiesList={todayNotificationEntities}/>
+            <EventList header="Pozostało 2 tygodnie - nie zapomnij o prezencie dla:" entitiesList={todayNotificationEntities}/>
         }
         <div className={styles.action}>
-            <button onClick={toggleOpen}>Close</button>
+            <button onClick={toggleOpen}>Zamknij</button>
         </div>
 
     </div>

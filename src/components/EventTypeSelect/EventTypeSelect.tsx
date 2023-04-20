@@ -7,15 +7,15 @@ export const EventTypeSelect = () => {
     const {register} = useFormContext();
 
     return <label className={styles.label}>
-        Find event:
+        Typ wydarzenia:
         <select
             {...register("eventType",
                 {
                     valueAsNumber: true,
                 })
             }>
-            <option value={EventType.Birthday}>Find birthday</option>
-            <option value={EventType.Notification}>Find notification day</option>
+            <option value={EventType.Birthday}>Urodziny</option>
+            <option value={EventType.Notification}>Przypomnienie</option>
         </select>
     </label>
 };

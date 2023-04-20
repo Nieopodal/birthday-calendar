@@ -16,8 +16,8 @@ export const EventList = ({header, entitiesList}: Props) => (
                 <li key={i}>
                     <strong>{el.name} {el.surname}</strong>:
                     <div>Email: {el.email}</div>
-                    <div>Date of birth: {el.dateOfBirth}</div>
-                    <div>Hobbies: {el.hobbies}</div>
+                    <div>Data urodzenia: {el.dateOfBirth}</div>
+                    <div>Zainteresowania: {el.hobbies}</div>
                 </li>)
             }
         </ul>

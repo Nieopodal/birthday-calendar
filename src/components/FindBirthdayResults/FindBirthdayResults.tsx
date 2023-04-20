@@ -12,7 +12,7 @@ export const FindBirthdayResults = ({foundEntities}: Props) => {
     if (!foundEntities) return null;
 
     return <div>
-        <div>Found {foundEntities.length} result(s)</div>
+        <div>Znalezionych wyników: {foundEntities.length}</div>
         {
             foundEntities.map((el, i) => <EventList key={i}
                                                     header={`${format(new Date(el.eventDate), "yyyy-MM-dd")}  - ${returnEventTextHandler(el.eventType)} `}

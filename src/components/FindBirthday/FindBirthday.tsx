@@ -49,14 +49,14 @@ export const FindBirthday = () => {
     };
 
     return <>
-        <h3 className={styles.h3}>Find events by username (full or partial):</h3>
+        <h3 className={styles.h3}>Wyszukaj wydarzenie po imieniu solenizanta (lub jego części):</h3>
 
         <form onSubmit={handleSubmit(data => formSubmitHandler(data))}>
             <FormProvider {...methods}>
-                <FormInput labelName="name" inputType="text" inputName="name" isRequired/>
+                <FormInput labelName="Imię" inputType="text" inputName="name" isRequired/>
                 <EventTypeSelect/>
             </FormProvider>
-            <button type="submit">Find!</button>
+            <button type="submit">Szukaj</button>
         </form>
 
         <FindBirthdayResults foundEntities={foundEntities}/>

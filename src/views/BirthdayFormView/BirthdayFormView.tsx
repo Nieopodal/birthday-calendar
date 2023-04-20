@@ -6,6 +6,7 @@ import {format, subDays} from 'date-fns';
 import {FormInput} from "../../components/common/FormInput/FormInput";
 import {setBirthday} from "../../features/birthday/birthday-slice";
 import {useLocalStorage} from "../../hooks/useLocalStorage";
+import styles from "../HomeView/HomeView.module.scss";
 
 interface InputsFormData {
     name: string;
@@ -49,16 +50,16 @@ export const BirthdayFormView = () => {
     };
 
     return <>
-        <h1>Birthday form</h1>
+        <h1 className={styles.h1}>Formularz urodzinowy</h1>
         <main>
             <form onSubmit={handleSubmit(data => formSubmitHandler(data))}>
                 <FormProvider {...methods}>
-                    <FormInput labelName="Name" inputType="text" inputName="name" isRequired/>
-                    <FormInput labelName="Surname" inputType="text" inputName="surname" isRequired/>
-                    <FormInput labelName="E-mail" inputType="email" inputName="email" isRequired/>
-                    <FormInput labelName="Date of birth" inputType="date" inputName="dateOfBirth" isRequired/>
-                    <FormInput labelName="Hobbies" inputType="text" inputName="hobbies" isRequired/>
-                    <button type="submit">Save</button>
+                    <FormInput labelName="Imię" inputType="text" inputName="name" isRequired/>
+                    <FormInput labelName="Nazwisko" inputType="text" inputName="surname" isRequired/>
+                    <FormInput labelName="Email" inputType="email" inputName="email" isRequired/>
+                    <FormInput labelName="Data urodzenia" inputType="date" inputName="dateOfBirth" isRequired/>
+                    <FormInput labelName="Zainteresowania" inputType="text" inputName="hobbies" isRequired/>
+                    <button type="submit">Zapisz</button>
                 </FormProvider>
             </form>
         </main>
