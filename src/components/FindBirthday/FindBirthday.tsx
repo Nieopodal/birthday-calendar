@@ -4,9 +4,9 @@ import {getYear} from "date-fns";
 import {useLocalStorage} from "../../hooks/useLocalStorage";
 import {FormInput} from "../common/FormInput";
 import {OneEntityIncludingEventDateAndType} from "../../types/OneEntity";
-import {EventList} from "../common/EventList";
 import {EventType} from "../../types/EventType";
 import {EventTypeSelect} from "../EventTypeSelect";
+import {FindBirthdayResults} from "../FindBirthdayResults/FindBirthdayResults";
 
 interface InputFormData {
     name: string;
@@ -15,7 +15,7 @@ interface InputFormData {
 
 export const FindBirthday = () => {
     const {birthdayFromState} = useLocalStorage();
-    const [foundEntities, setFoundEntities] = useState<OneEntityIncludingEventDateAndType[]>([]);
+    const [foundEntities, setFoundEntities] = useState<OneEntityIncludingEventDateAndType[] | null>(null);
 
     const methods = useForm<InputFormData>({
         defaultValues: {
@@ -31,6 +31,11 @@ export const FindBirthday = () => {
             .filter(el => el.name
                 .toLowerCase()
                 .includes(data.name.toLowerCase()));
+
+        if (founded.length === 0) {
+            setFoundEntities([]);
+            return;
+        }
 
         setFoundEntities(founded.map(el => {
             return {
@@ -52,10 +57,6 @@ export const FindBirthday = () => {
             <button type="submit">Find!</button>
         </form>
 
-        <div>
-            {
-                foundEntities.map((el, i) => <EventList key={i} header={el.eventDate} entitiesList={[el]}/>)
-            }
-        </div>
+        <FindBirthdayResults foundEntities={foundEntities}/>
     </>
 };
