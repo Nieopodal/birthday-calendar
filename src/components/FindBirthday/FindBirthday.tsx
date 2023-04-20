@@ -40,7 +40,7 @@ export const FindBirthday = () => {
         setFoundEntities(founded.map(el => {
             return {
                 ...el,
-                eventDate: `${getYear(new Date())}-${data.eventType === EventType.Birthday ? el.dateOfBirth.slice(5) : el.notificationDate.slice(5)}`,
+                eventDate: new Date(`${getYear(new Date())}-${data.eventType === EventType.Birthday ? el.dateOfBirth.slice(5) : el.notificationDate.slice(5)}`),
                 eventType: data.eventType,
             };
         }));

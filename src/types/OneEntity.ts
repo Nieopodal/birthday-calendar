@@ -10,6 +10,6 @@ export interface OneEntity {
 }
 
 export interface OneEntityIncludingEventDateAndType extends OneEntity {
-    eventDate: string;
+    eventDate: Date;
     eventType: EventType;
 }
