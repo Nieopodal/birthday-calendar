@@ -5,12 +5,12 @@ import {setFromLocalStorage} from "../features/birthday/birthday-slice";
 
 export const useLocalStorage = () => {
     const dispatch = useDispatch();
-    const {birthday: birthdayFromState} = useSelector((state: RootState) => state.birthday);
+    const {birthday: birthdayListFromState} = useSelector((state: RootState) => state.birthday);
 
     useEffect(() => {
-        if (birthdayFromState.length > 1) {
+        if (birthdayListFromState.length > 1) {
             return;
-        } else if (birthdayFromState.length === 0) {
+        } else if (birthdayListFromState.length === 0) {
             const birthdayList = localStorage.getItem("birthdayList");
 
             if (birthdayList) {
@@ -22,7 +22,7 @@ export const useLocalStorage = () => {
                 }
             }
         }
-    }, [dispatch, birthdayFromState]);
+    }, [dispatch, birthdayListFromState]);
 
-    return {birthdayFromState};
+    return {birthdayListFromState};
 };

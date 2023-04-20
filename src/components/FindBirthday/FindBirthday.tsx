@@ -14,7 +14,7 @@ interface InputFormData {
 }
 
 export const FindBirthday = () => {
-    const {birthdayFromState} = useLocalStorage();
+    const {birthdayListFromState} = useLocalStorage();
     const [foundEntities, setFoundEntities] = useState<OneEntityIncludingEventDateAndType[] | null>(null);
 
     const methods = useForm<InputFormData>({
@@ -27,7 +27,7 @@ export const FindBirthday = () => {
     const {handleSubmit} = methods;
 
     const formSubmitHandler = (data: InputFormData) => {
-        const founded = birthdayFromState
+        const founded = birthdayListFromState
             .filter(el => el.name
                 .toLowerCase()
                 .includes(data.name.toLowerCase()));

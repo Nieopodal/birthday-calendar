@@ -19,7 +19,7 @@ export const BirthdayFormView = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    useLocalStorage();
+    const {birthdayListFromState} = useLocalStorage();
 
     const methods = useForm<InputsFormData>({
         defaultValues: {
@@ -33,21 +33,25 @@ export const BirthdayFormView = () => {
 
     const {handleSubmit} = methods;
 
+    const formSubmitHandler = (data: InputsFormData) => {
+        const notification = subDays(new Date(data.dateOfBirth), 14);
+        const notificationFormatted = format(notification, 'yyyy-MM-dd');
+        const fullBirthdayData = {
+            ...data,
+            notificationDate: notificationFormatted,
+        };
+        localStorage.setItem(
+            'birthdayList',
+            JSON.stringify([...birthdayListFromState, fullBirthdayData]),
+        );
+        dispatch(setBirthday(fullBirthdayData));
+        navigate('/calendar', {replace: true});
+    };
+
     return <>
         <h1>Birthday form</h1>
         <main>
-            <form onSubmit={handleSubmit(data => {
-
-                const notification = subDays(new Date(data.dateOfBirth), 14);
-                const notificationFormatted = format(notification, 'yyyy-MM-dd');
-                const fullBirthdayData = {
-                    ...data,
-                    notificationDate: notificationFormatted,
-                };
-
-                dispatch(setBirthday(fullBirthdayData));
-                navigate('/calendar', {replace: true});
-            })}>
+            <form onSubmit={handleSubmit(data => formSubmitHandler(data))}>
                 <FormProvider {...methods}>
                     <FormInput labelName="Name" inputType="text" inputName="name" isRequired/>
                     <FormInput labelName="Surname" inputType="text" inputName="surname" isRequired/>

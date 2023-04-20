@@ -11,12 +11,12 @@ interface Props {
 }
 
 export const PeriodDays = ({givenDate, period}: Props) => {
-    const {birthdayFromState} = useLocalStorage();
+    const {birthdayListFromState} = useLocalStorage();
     const {daysInPeriodListIncludingZeros, today, datesInWeek} = usePeriod(givenDate, period);
     const {
         entitiesWithBirthdayThisPeriod,
         entitiesWithNotificationsThisPeriod
-    } = useEventsInPeriod(givenDate, birthdayFromState);
+    } = useEventsInPeriod(givenDate, birthdayListFromState);
 
     return <>
 

@@ -23,13 +23,9 @@ export const birthdaySlice = createSlice({
     reducers: {
         setBirthday: (state, action: SetBirthday) => {
             state.birthday.push(action.payload);
-            localStorage.setItem(
-                'birthdayList',
-                JSON.stringify(state.birthday),
-            );
         },
         setFromLocalStorage: (state, action: SetFromLocalStorage) => {
-          state.birthday = action.payload;
+            state.birthday = action.payload;
         },
     },
 });
