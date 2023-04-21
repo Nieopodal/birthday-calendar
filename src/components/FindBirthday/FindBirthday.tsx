@@ -33,12 +33,10 @@ export const FindBirthday = () => {
             .filter(el => el.name
                 .toLowerCase()
                 .includes(data.name.toLowerCase()));
-
         if (founded.length === 0) {
             setFoundEntities([]);
             return;
         }
-
         setFoundEntities(founded.map(el => {
             return {
                 ...el,
@@ -50,15 +48,15 @@ export const FindBirthday = () => {
 
     return <>
         <h3 className={styles.h3}>Wyszukaj wydarzenie po imieniu solenizanta (lub jego części):</h3>
-
-        <form onSubmit={handleSubmit(data => formSubmitHandler(data))}>
+        <form
+            onSubmit={handleSubmit(data => formSubmitHandler(data))}
+        >
             <FormProvider {...methods}>
                 <FormInput labelName="Imię" inputType="text" inputName="name" isRequired/>
                 <EventTypeSelect/>
             </FormProvider>
             <button type="submit">Szukaj</button>
         </form>
-
         <FindBirthdayResults foundEntities={foundEntities}/>
     </>
 };

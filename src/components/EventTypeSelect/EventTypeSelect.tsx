@@ -9,6 +9,7 @@ export const EventTypeSelect = () => {
     return <label className={styles.label}>
         Typ wydarzenia:
         <select
+            className={styles.select}
             {...register("eventType",
                 {
                     valueAsNumber: true,

@@ -49,7 +49,9 @@ export const OneDayCard = ({
                 className={`${styles.card} ${dayNumber === today ? styles.today : ''} ${todayNotificationEntities.length > 0 && styles.notification} ${todayBirthdayEntities.length > 0 && styles.birthday}`}
                 onClick={btnHandler}
             >
-                {period === CalendarPeriod.Week ? `${dayNumber}/${monthNumberToPrint}` : dayNumber}
+                {
+                    period === CalendarPeriod.Week ? `${dayNumber}/${monthNumberToPrint}` : dayNumber
+                }
             </div>
         }
     </>

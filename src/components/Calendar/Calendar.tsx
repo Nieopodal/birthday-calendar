@@ -28,29 +28,33 @@ export const Calendar = () => {
     };
 
     return <>
-        <h1 className={styles.h1}>{calendarPeriod === CalendarPeriod.Month ? `Kalendarz miesięczny` : `Kalendarz tygodniowy`}</h1>
-        <h2 className={styles.h2}>{calendarPeriod === CalendarPeriod.Month ? getMonthAndYearFromDate(givenDate) : getWeekNumberAndYear(givenDate)}</h2>
+        <header className={styles.header}>
+            <h1>{calendarPeriod === CalendarPeriod.Month ? `Kalendarz miesięczny` : `Kalendarz tygodniowy`}</h1>
+        </header>
+        <div className={styles.main}>
+            <h2 className={styles.h2}>{calendarPeriod === CalendarPeriod.Month ? getMonthAndYearFromDate(givenDate) : getWeekNumberAndYear(givenDate)}</h2>
 
-        <div className={styles.nav}>
-            <button onClick={() => changePeriodBtnHandler(ChangePeriodDirection.Previous)}><BackwardSvg/></button>
-            <button onClick={() => changePeriodBtnHandler(ChangePeriodDirection.Next)}><ForwardSvg/></button>
-        </div>
+            <div className={styles.nav}>
+                <button onClick={() => changePeriodBtnHandler(ChangePeriodDirection.Previous)}><BackwardSvg/></button>
+                <button onClick={() => changePeriodBtnHandler(ChangePeriodDirection.Next)}><ForwardSvg/></button>
+            </div>
 
-        <div className={styles.wrapper}>
-            {
-                WEEKDAYS.map((el, i) => <div className={styles.child} key={i}>{el}</div>)
-            }
-            <PeriodDays
-                givenDate={givenDate}
-                period={calendarPeriod}
-            />
-        </div>
+            <div className={styles.wrapper}>
+                {
+                    WEEKDAYS.map((el, i) => <div className={styles.child} key={i}>{el}</div>)
+                }
+                <PeriodDays
+                    givenDate={givenDate}
+                    period={calendarPeriod}
+                />
+            </div>
 
-        <div className={styles.footer}>
-            <button className={styles.change_btn} onClick={changeCalendarViewBtnHandler}>Zmień widok</button>
-            <div className={styles.legend}>
-                <Square background={EventType.Birthday}/> - Urodziny,
-                <Square background={EventType.Notification}/> - Przypomnienie
+            <div className={styles.footer}>
+                <button className={styles.change_btn} onClick={changeCalendarViewBtnHandler}>Zmień widok</button>
+                <div className={styles.legend}>
+                    <Square background={EventType.Birthday}/> - Urodziny,
+                    <Square background={EventType.Notification}/> - Przypomnienie
+                </div>
             </div>
         </div>
     </>

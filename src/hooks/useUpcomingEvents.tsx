@@ -14,7 +14,7 @@ export const useUpcomingEvents = () => {
         const entitiesComparedByNotificationDate = compareDatesWithTodayHandler(birthdayListFromState, EventType.Notification);
 
         const sortedEvents = sortEventsByDate(entitiesComparedByBirthdayDate, entitiesComparedByNotificationDate);
-        const shortenedList = sortedEvents.length > 3 ? sortedEvents.slice(0,3) : sortedEvents;
+        const shortenedList = sortedEvents.length > 3 ? sortedEvents.slice(0, 3) : sortedEvents;
 
         setSortedLimitedEntities(shortenedList);
     }, [birthdayListFromState]);

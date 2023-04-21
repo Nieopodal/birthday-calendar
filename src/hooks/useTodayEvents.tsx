@@ -6,7 +6,7 @@ export const useTodayEvents = (dayNumber: number, entitiesWithNotificationsThisM
     const [todayBirthdayEntities, setTodayBirthdayEntities] = useState<OneEntity[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
-    useEffect( () => {
+    useEffect(() => {
         setLoading(true);
         const formattedOneDay = dayNumber < 10 ? `0${dayNumber}` : `${dayNumber}`;
         setTodayNotificationEntities(entitiesWithNotificationsThisMonth.filter((el) => el.notificationDate.slice(8) === formattedOneDay));

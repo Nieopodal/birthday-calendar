@@ -1,23 +1,28 @@
+@import "../../variables";
+
 .modal {
-    position: absolute;
-    padding: 2rem;
-    min-height: 30vh;
-    min-width: 10vh;
-    background-color: white;
-    z-index: 50;
-    border: 2px solid black;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  padding: 2rem;
+  min-width: 10vh;
+  background-color: white;
+  z-index: 50;
+  border: 0.5px solid #dfdfdf;
+  border-radius: 0.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 8px 8px 20px -13px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 20px -13px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 20px -13px rgba(66, 68, 90, 1);
 }
 
 .h3 {
-    max-width: fit-content;
-    margin: 0 auto;
-    font-size: xx-large;
+  max-width: fit-content;
+  margin: 0 auto;
+  font-size: x-large;
 }
 
 .action {
-    max-width: fit-content;
-    margin: 0 auto;
+  max-width: fit-content;
+  margin: 0 auto;
 }

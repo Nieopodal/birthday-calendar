@@ -1,6 +1,14 @@
+@import "../../variables";
+
 .label {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.25rem;
-    max-width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  max-width: 20rem;
+}
+
+.select {
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
+  padding: 4px 10px;
 }

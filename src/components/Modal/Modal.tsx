@@ -24,7 +24,8 @@ export const Modal = ({open, toggleOpen, todayNotificationEntities, todayBirthda
 
         {
             todayNotificationEntities.length > 0 &&
-            <EventList header="Pozostało 2 tygodnie - nie zapomnij o prezencie dla:" entitiesList={todayNotificationEntities}/>
+            <EventList header="Pozostało 2 tygodnie - nie zapomnij o prezencie dla:"
+                       entitiesList={todayNotificationEntities}/>
         }
         <div className={styles.action}>
             <button onClick={toggleOpen}>Zamknij</button>

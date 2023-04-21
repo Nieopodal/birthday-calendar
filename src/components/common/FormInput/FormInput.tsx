@@ -10,17 +10,18 @@ interface Props {
     isRequired?: boolean;
 }
 
-export const FormInput  = ({labelName, inputType, inputName, isRequired}: Props) => {
-    const { register } = useFormContext()
+export const FormInput = ({labelName, inputType, inputName, isRequired}: Props) => {
+    const {register} = useFormContext()
 
     return <div className={styles.container}>
         <label className={styles.label}>
-        {labelName}:
-        <input
-            type={inputType}
-            {...register(inputName)}
-            required={isRequired}
-        />
-    </label>
+            {labelName}:
+            <input
+                className={styles.input}
+                type={inputType}
+                {...register(inputName)}
+                required={isRequired}
+            />
+        </label>
     </div>
 };

@@ -1,4 +1,49 @@
+@import "../../variables";
+
 .app_container {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto 2rem auto;
+}
+
+h1 {
+  font-family:"Candara Light", sans-serif;
+  color: $accent-color;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+button {
+  all: unset;
+  font-weight: 600;
+  border: 1px solid $border-color;
+  border-radius: 0.2rem;
+  text-align: center;
+  padding: 0.25rem 0.25rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background: $accent-color;
+  color: white;
+}
+
+button:focus {
+  font-weight: bold;
+}
+
+header {
+  margin: 2rem auto;
+  width: fit-content;
+
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+
+    a {
+      color: #815b1c;
+    }
+  }
 }
