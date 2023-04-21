@@ -1,0 +1,70 @@
+@import "../../variables";
+
+.header {
+  margin: 2rem 0;
+}
+
+.main {
+  border-radius: 1rem;
+  padding: 1rem;
+  background: white;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.child {
+  font-size: x-large;
+  font-weight: 500;
+  vertical-align: middle;
+  text-align: center;
+  min-width: 10vh;
+  min-height: 4vh;
+  border-radius: 0.25rem;
+  border: 1px solid $border-color;
+  margin: 0.25vh;
+  background: $accent-color;
+  color: white;
+}
+
+.h2 {
+  max-width: fit-content;
+  margin: 0 auto;
+  font-size: xx-large;
+}
+
+.nav {
+  max-width: fit-content;
+  margin: 2vh auto;
+}
+
+.nav {
+  button {
+    all: unset;
+    font-size: $svg-width;
+    height: 100%;
+    margin-left: 1rem;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  button:focus {
+    color: $accent-color;
+  }
+}
+
+.footer {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+}

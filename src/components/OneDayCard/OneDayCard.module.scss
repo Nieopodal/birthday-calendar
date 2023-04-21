@@ -1,0 +1,30 @@
+@import "../../variables";
+
+.card {
+  border-radius: 0.25rem;
+  min-width: 6vh;
+  min-height: 8vh;
+  border: 1px solid $border-color;
+  margin: 0.25vh;
+  font-weight: bold;
+}
+
+.card:hover {
+  border-color: #c6c4c4;
+}
+
+.today {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.notification {
+  background-color: $notification-color;
+  cursor: pointer;
+}
+
+.birthday {
+  background-color: $birthday-color;
+  cursor: pointer;
+}
+
