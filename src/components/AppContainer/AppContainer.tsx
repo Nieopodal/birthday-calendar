@@ -1,11 +1,11 @@
 import {ReactNode} from "react";
 
-import "./AppContainer.scss";
+import styles from "./AppContainer.module.scss";
 
 interface Props {
     children: ReactNode;
 }
 
-export const AppContainer = ({children}: Props) => {
-    return <div className={"app-container"}>{children}</div>;
-};
+export const AppContainer = ({children}: Props) => (
+    <div className={styles.app_container}>{children}</div>
+);
